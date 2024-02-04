@@ -4,10 +4,16 @@ const SubTask = require('../models/subTaskModel');
 const Task = require('../models/taskModel')
 const authenticateUser = require('../middlewares/authMiddleware')
 
-router.post('/create', async (req, res) => {
+router.post('/create', authenticateUser, async (req, res) => {
     const { task_id } = req.body;
 
     try {
+        const task = await Task.findOne({ _id: task_id, user: req.userId });
+
+        if (!task) {
+            return res.status(403).json({ message: 'You do not have permission to create a subtask for this task.' });
+        }
+
         const subTask = new SubTask({
             task_id,
             status: 0 
