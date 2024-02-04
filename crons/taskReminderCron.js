@@ -5,7 +5,7 @@ const twilio = require('twilio');
 
 require('dotenv').config();
 
-const twilioClient = twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH)
+const twilioClient = twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH);
 
 async function initiateVoiceCalls() {
     try {

@@ -4,6 +4,13 @@ const router = express.Router();
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 
+require('dotenv').config();
+
+let userCount = 1;
+
+const twilio = require('twilio');
+const client = twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH);
+
 router.post('/register', async (req, res) => {
     const existingUser = await User.findOne({ phone_number: req.body.phone_number });
 
@@ -29,6 +36,7 @@ router.post('/register', async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 });
+
 
 router.get('/fetch', async (req, res) => {
     try {
@@ -64,13 +72,28 @@ router.delete('/delete/:id', async (req, res) => {
     const userId = req.params.id;
 
     try {
+        const userToDelete = await User.findById(userId);
+
+        if (!userToDelete) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const phoneNumberToDelete = userToDelete.phone_number;
+
         await User.findByIdAndRemove(userId);
 
-        res.json({ message: 'User deleted' });
+        const callerIds = await twilioClient.incomingPhoneNumbers.list();
+        const callerIdToDelete = callerIds.find(callerId => callerId.phoneNumber === phoneNumberToDelete);
+        if (callerIdToDelete) {
+            await twilioClient.incomingPhoneNumbers(callerIdToDelete.sid).remove();
+            console.log('Removed verified caller ID:', phoneNumberToDelete);
+        }
+
+        res.json({ message: 'User deleted successfully' });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error('Error deleting user and verified caller ID:', error);
+        res.status(500).json({ message: 'Error deleting user and verified caller ID' });
     }
 });
-
 
 module.exports = router;

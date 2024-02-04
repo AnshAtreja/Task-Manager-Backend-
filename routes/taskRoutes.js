@@ -14,7 +14,6 @@ router.post('/create', authenticateUser, async (req, res) => {
             title,
             description,
             due_date,
-            status: 'TODO' 
         });
 
         const newTask = await task.save();
@@ -99,6 +98,10 @@ router.delete('/delete/:id', authenticateUser, async (req, res) => {
     try {
         const taskId = req.params.id;
         const userId = req.userId; 
+
+        if(!req.userId){
+            res.status(401).json({message: "Unauthorized"})
+        }
 
         const task = await Task.findOne({ _id: taskId, user: userId }); 
 

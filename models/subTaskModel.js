@@ -24,25 +24,18 @@ const subTaskSchema = new mongoose.Schema({
 
 subTaskSchema.post(['save', 'findOneAndUpdate'], async function(doc, next) {
     try {
-        const SubTask = this.constructor; 
-        const Task = mongoose.model('Task'); 
+        const SubTask = this.constructor;
+        const Task = mongoose.model('Task');
 
-        if (this.isNew || !this.new) {
-            const updatedSubTask = await SubTask.findById(doc._id);
-            if (!updatedSubTask) return; 
+        const task = await Task.findOne({ _id: doc.task_id, deleted: false });
 
-            const task = await Task.findOne({ subTasks: doc._id, deleted: false });
-
-            if (!task) {
-                return next();
-            }
-
+        if (task) {
             const subTasks = await SubTask.find({ _id: { $in: task.subTasks }, deleted : false });
 
             const allDone = subTasks.every(subTask => subTask.status === 1);
             const anyInProgress = subTasks.some(subTask => subTask.status === 1);
 
-            if (allDone) {
+            if (allDone && task.subTasks.length !== 0) {
                 task.status = 'DONE';
             } else if (anyInProgress) {
                 task.status = 'IN_PROGRESS';
