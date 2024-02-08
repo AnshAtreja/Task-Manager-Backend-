@@ -58,7 +58,7 @@ Prioriy can be 0, 1 or 2
   {
     "title": "example_title_(string)",
     "description": "example_description_(string)",
-    "due_date": "example_due_date_(date)"
+    "due_date": "2024-02-03"
   }
   ```
   - Note : Please ensure providing the correct auth token as "Authorization" in the headers
