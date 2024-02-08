@@ -34,6 +34,10 @@
     "priority": 1
   }
   ```
+  Note : Please ensure that the provided phone number is available in Verified Caller ID's
+  ```plaintext
+  https://console.twilio.com/us1/develop/phone-numbers/manage/verified
+  ```
 
 
 
