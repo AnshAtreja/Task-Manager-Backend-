@@ -24,7 +24,7 @@
    ```
 4. Run the server using
    ```plaintext
-   nodemon index.js
+   node index.js
    ```
 
 ## API Examples
