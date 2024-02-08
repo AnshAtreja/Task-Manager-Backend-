@@ -48,6 +48,7 @@ Prioriy can be 0, 1 or 2
   https://console.twilio.com/us1/develop/phone-numbers/manage/verified
   ```
   - This will return an auth token that must be provided in headers of tasks and sub-tasks API's for authentication
+  - The auth token expires within an hour, to get a new one just send the request again
     
 ### 2. Creating a task
   - URL
