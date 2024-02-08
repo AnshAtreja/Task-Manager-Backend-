@@ -8,9 +8,9 @@
 ## Installation
 
 1. Firstly clone the provided repository
-  ```plaintext
-  https://github.com/AnshAtreja/Task-Manager-Backend-.git
-  ```
+    ```plaintext
+    https://github.com/AnshAtreja/Task-Manager-Backend-.git
+    ```
 2. Install the necessary dependencies
    ```plaintext
    npm install
@@ -23,13 +23,13 @@
    MONGO_URI = your_mongo_uri
    ```
 4. Run the server using
-   ```
+   ```plaintext
    nodemon index.js
    ```
 
 ## API Examples
 
-1. Creating User
+### 1. Creating User
   - URL
   ```
   http://localhost:3000/api/users/register
@@ -37,14 +37,75 @@
   - Body
   ```json
   {
-    "phone_number": "enter_phone_number_with_country_code",
-    "priority": 1
+    "phone_number": "enter_phone_number_with_country_code_(string)",
+    "priority": 1 //can be 0, 1 or 2
   }
   ```
-  Note : Please ensure that the provided phone number is available in Verified Caller ID's
+  - Note : Please ensure that the provided phone number is available in Verified Caller ID's
   ```plaintext
   https://console.twilio.com/us1/develop/phone-numbers/manage/verified
   ```
+  - This will return an auth token that must be provided in headers of tasks and sub-tasks API's for authentication
+  - 
+### 2. Creating a task
+  - URL
+  ```
+  http://localhost:3000/api/tasks/create
+  ```
+  - Body
+  ```json
+  {
+    "title": "example_title_(string)",
+    "description": "example_description_(string)",
+    "due_date": "example_due_date_(date)"
+  }
+  ```
+  - Note : Please ensure providing the correct auth token as "Authorization" in the headers
+
+### 3. Fetching tasks
+  - URL
+  ```
+  http://localhost:3000/api/tasks/fetch?&page=1&limit=10
+  ```
+  The parameters page and limit can be adjusted according to the needs of the user
+  - Note : Please ensure providing the correct auth token as "Authorization" in the headers
+
+### 4. Updating a task
+  - URL
+  ```
+  http://localhost:3000/api/tasks/update/<task_id>
+  ```
+  - Body
+  ```json
+  {
+    "due_date": "2024-03-15",
+    "status": "DONE" //can be "DONE", "TODO" or "IN_PROGRESS"
+  }
+  ```
+  - Note : Please ensure providing the correct auth token as "Authorization" in the headers
+
+### 5. Deleting a task ( soft deletion )
+  - URL
+  ```
+  http://localhost:3000/api/tasks/delete/<task_id>
+  ```
+  - Note : Please ensure providing the correct auth token as "Authorization" in the headers
+
+### 6. Creating a sub-task
+  - URL
+  ```
+  http://localhost:3000/api/subTasks/create
+  ```
+  - Body
+  ```json
+  {
+  "task_id" : "id_of_task_(string)"
+  }
+  ```
+  - Note : Please ensure providing the correct auth token as "Authorization" in the headers
+
+  
+
 
 
 
