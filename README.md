@@ -38,9 +38,10 @@
   ```json
   {
     "phone_number": "enter_phone_number_with_country_code_(string)",
-    "priority": 1 //can be 0, 1 or 2
+    "priority": 1 
   }
   ```
+    Prioriy can be 0, 1 or 2
   - Note : Please ensure that the provided phone number is available in Verified Caller ID's
   ```plaintext
   https://console.twilio.com/us1/develop/phone-numbers/manage/verified
@@ -79,9 +80,10 @@
   ```json
   {
     "due_date": "2024-03-15",
-    "status": "DONE" //can be "DONE", "TODO" or "IN_PROGRESS"
+    "status": "DONE" 
   }
   ```
+    Status can be "DONE", "TODO" or "IN_PROGRESS"
   - Note : Please ensure providing the correct auth token as "Authorization" in the headers
 
 ### 5. Deleting a task ( soft deletion )
