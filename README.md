@@ -15,7 +15,14 @@
    ```plaintext
    npm install
    ```
-3. Run the server using
+3. Create a ".env" file in the project directory and mention the following keys
+   ```plaintext
+   PORT = 3000
+   TWILIO_SID = your_twilio_account_sid
+   TWILIO_AUTH = your_twilio_auth_token
+   MONGO_URI = your_mongo_uri
+   ```
+4. Run the server using
    ```
    nodemon index.js
    ```
