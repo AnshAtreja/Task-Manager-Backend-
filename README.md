@@ -11,6 +11,30 @@
   ```plaintext
   https://github.com/AnshAtreja/Task-Manager-Backend-.git
   ```
+2. Install the necessary dependencies
+   ```plaintext
+   npm install
+   ```
+3. Run the server using
+   ```
+   nodemon index.js
+   ```
+
+## API Examples
+
+1. Creating User
+  - URL
+  ```
+  http://localhost:3000/api/users/register
+  ```
+  - Body
+  ```json
+  {
+    "phone_number": "enter_phone_number_with_country_code",
+    "priority": 1
+  }
+  ```
+
 
 
 
