@@ -71,7 +71,7 @@ POST Request
   http://localhost:3000/api/tasks/fetch?&page=1&limit=10
   ```
 GET Request
-  The parameters page and limit can be adjusted according to the needs of the user
+The parameters page and limit can be adjusted according to the needs of the user
   - Note : Please ensure providing the correct auth token as "Authorization" in the headers
 
 ### 4. Updating a task
