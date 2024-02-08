@@ -41,13 +41,13 @@
     "priority": 1 
   }
   ```
-    Prioriy can be 0, 1 or 2
+Prioriy can be 0, 1 or 2
   - Note : Please ensure that the provided phone number is available in Verified Caller ID's
   ```plaintext
   https://console.twilio.com/us1/develop/phone-numbers/manage/verified
   ```
   - This will return an auth token that must be provided in headers of tasks and sub-tasks API's for authentication
-  - 
+    
 ### 2. Creating a task
   - URL
   ```
@@ -83,7 +83,7 @@
     "status": "DONE" 
   }
   ```
-    Status can be "DONE", "TODO" or "IN_PROGRESS"
+Status can be "DONE", "TODO" or "IN_PROGRESS"
   - Note : Please ensure providing the correct auth token as "Authorization" in the headers
 
 ### 5. Deleting a task ( soft deletion )
