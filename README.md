@@ -34,6 +34,7 @@
   ```
   http://localhost:3000/api/users/register
   ```
+POST Request
   - Body
   ```json
   {
@@ -53,6 +54,7 @@ Prioriy can be 0, 1 or 2
   ```
   http://localhost:3000/api/tasks/create
   ```
+POST Request
   - Body
   ```json
   {
@@ -68,6 +70,7 @@ Prioriy can be 0, 1 or 2
   ```
   http://localhost:3000/api/tasks/fetch?&page=1&limit=10
   ```
+GET Request
   The parameters page and limit can be adjusted according to the needs of the user
   - Note : Please ensure providing the correct auth token as "Authorization" in the headers
 
@@ -76,6 +79,7 @@ Prioriy can be 0, 1 or 2
   ```
   http://localhost:3000/api/tasks/update/<task_id>
   ```
+PUT Request
   - Body
   ```json
   {
@@ -91,6 +95,7 @@ Status can be "DONE", "TODO" or "IN_PROGRESS"
   ```
   http://localhost:3000/api/tasks/delete/<task_id>
   ```
+DELETE Request
   - Note : Please ensure providing the correct auth token as "Authorization" in the headers
 
 ### 6. Creating a sub-task
@@ -98,6 +103,7 @@ Status can be "DONE", "TODO" or "IN_PROGRESS"
   ```
   http://localhost:3000/api/subTasks/create
   ```
+POST Request
   - Body
   ```json
   {
