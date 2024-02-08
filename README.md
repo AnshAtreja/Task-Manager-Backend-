@@ -8,11 +8,9 @@
 ## Installation
 
 1. Firstly clone the provided repository
-<pre>
   ```plaintext
   https://github.com/AnshAtreja/Task-Manager-Backend-.git
   ```
-</pre>
 
 
 
