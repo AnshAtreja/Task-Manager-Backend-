@@ -29,7 +29,7 @@ async function initiateVoiceCalls() {
                 console.log("Calling : ", user.phone_number)
                 await twilioClient.calls.create({
                     to: user.phone_number,
-                    from: '+14064122997',
+                    from: process.env.TWILIO_NUMBER,
                     url: 'http://demo.twilio.com/docs/classic.mp3' 
                 });
 
