@@ -20,6 +20,7 @@
    PORT = 3000
    TWILIO_SID = your_twilio_account_sid
    TWILIO_AUTH = your_twilio_auth_token
+   TWILIO_NUMBER = your_twilio_phone_number
    MONGO_URI = your_mongo_uri
    ```
 4. Run the server using
